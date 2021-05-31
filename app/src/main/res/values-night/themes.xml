@@ -2,8 +2,8 @@
     <!-- Base application theme. -->
     <style name="Theme.OSexamen" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_500</item>
+        <item name="colorPrimary">#007AFF</item>
+        <item name="colorPrimaryVariant">#0050A6</item>
         <item name="colorOnPrimary">#141F25</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>

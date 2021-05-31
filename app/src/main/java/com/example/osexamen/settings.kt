@@ -26,7 +26,6 @@ class settings : AppCompatActivity() {
         val switch = findViewById<Switch>(R.id.switch1)
 
         DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
-        Log.d("DarkMode", DarkMode.toString())
         switch.isChecked = DarkMode
         button1?.setOnClickListener()
         {

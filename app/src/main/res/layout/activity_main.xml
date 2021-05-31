@@ -17,10 +17,11 @@
         tools:weightSum="100">
 
         <LinearLayout
+            android:id="@+id/linearLayout1"
+
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10"
-            android:background="@drawable/shadow"
             android:orientation="horizontal"
             android:weightSum="10">
 
@@ -44,7 +45,6 @@
                 android:layout_marginEnd="5dp"
                 android:layout_weight="2"
                 android:scaleType="fitEnd"
-                android:textAlignment="textEnd"
                 app:srcCompat="@drawable/settings_icon" />
 
         </LinearLayout>
@@ -59,12 +59,12 @@
                 android:orientation="vertical"
                 tools:weightSum="90">
                 <LinearLayout
+                    android:id="@+id/linearLayout2"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="30"
                     android:orientation="vertical"
                     tools:weightSum="100"
-                    android:background="@drawable/shadow"
                     android:padding="10dp">
 
                     <TextView
@@ -100,12 +100,12 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="30"
                     android:orientation="vertical"
                     tools:weightSum="100"
-                    android:background="@drawable/shadow"
                     android:padding="10dp">
 
                     <TextView
@@ -140,12 +140,12 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linearLayout4"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="30"
                     android:orientation="vertical"
                     tools:weightSum="100"
-                    android:background="@drawable/shadow"
                     android:padding="10dp">
 
                     <TextView

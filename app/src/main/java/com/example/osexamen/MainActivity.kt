@@ -1,19 +1,20 @@
 package com.example.osexamen
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
 
 class MainActivity : AppCompatActivity() {
+    private var DarkMode: Boolean = false
+    private var APP_PREFERENCES_DARKMODE = "DarkMode"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val button1 = findViewById<Button>(R.id.button1)
         val settings = findViewById<ImageView>(R.id.settings)
+        SwitchToDarkMode()
         button1?.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
                 if (event!!.action == MotionEvent.ACTION_DOWN)
@@ -88,8 +90,7 @@ class MainActivity : AppCompatActivity() {
         })
         button6?.setOnClickListener {
             message()
-            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-        }//DEL
+        }
         val button7 = findViewById<Button>(R.id.button7)
         button7?.setOnTouchListener(object : View.OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
@@ -102,8 +103,33 @@ class MainActivity : AppCompatActivity() {
         })
         button7?.setOnClickListener {
             message()
+        }
+    }
+
+    private fun SwitchToDarkMode()
+    {
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        val linearLayout1 = findViewById<LinearLayout>(R.id.linearLayout1)
+        val linearLayout2 = findViewById<LinearLayout>(R.id.linearLayout2)
+        val linearLayout3 = findViewById<LinearLayout>(R.id.linearLayout3)
+        val linearLayout4 = findViewById<LinearLayout>(R.id.linearLayout4)
+        DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+        if(!DarkMode)
+        {
+            linearLayout1.setBackgroundResource(R.drawable.shadow)
+            linearLayout2.setBackgroundResource(R.drawable.shadow)
+            linearLayout3.setBackgroundResource(R.drawable.shadow)
+            linearLayout4.setBackgroundResource(R.drawable.shadow)
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }//DEL
+        }
+        else
+        {
+            linearLayout1.setBackgroundResource(R.drawable.shadowdark)
+            linearLayout2.setBackgroundResource(R.drawable.shadowdark)
+            linearLayout3.setBackgroundResource(R.drawable.shadowdark)
+            linearLayout4.setBackgroundResource(R.drawable.shadowdark)
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
     }
 
     private fun TestOS() {
