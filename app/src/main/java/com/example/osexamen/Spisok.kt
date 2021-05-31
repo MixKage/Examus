@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.setPadding
 
@@ -15,28 +16,39 @@ import androidx.core.view.setPadding
 class Spisok : AppCompatActivity() {
     private var answer = arrayOfNulls<String>(40)
     private var quest = arrayOfNulls<String>(40)
-
+    private var DarkMode: Boolean = false
+    private var APP_PREFERENCES_DARKMODE = "DarkMode"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_spisok)
         GenerateQuestAnswer()
-        var linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
+        SwitchToDarkMode()
+        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
         var CountID = 0
-        while (CountID < 40) {
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+        while (CountID < 40)
+        {
             val b = Button(applicationContext)
             b.text = quest[CountID]
             b.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
-            b.setBackgroundColor(Color.WHITE)
             b.id = CountID + 1
             b.setPadding(5)
             b.text
-            b.setBackgroundResource(R.drawable.shadow)
+            if(!DarkMode){
+                b.setBackgroundResource(R.drawable.shadow)
+                b.setTextColor(resources.getColor(R.color.cardview_dark_background))
+            }
+            else{
+                b.setBackgroundResource(R.drawable.shadowdark)
+                b.setTextColor(resources.getColor(R.color.DarkText))
+            }
             b.setOnClickListener()
             {
                 b.alpha = 0.7f
@@ -66,6 +78,27 @@ class Spisok : AppCompatActivity() {
             }
         })
         button0?.setOnClickListener { ExitToMenu() }
+    }
+
+    @Suppress("DEPRECATION")
+    private fun SwitchToDarkMode() {
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        val back = findViewById<LinearLayout>(R.id.back)
+        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout1)
+        val maintext = findViewById<TextView>(R.id.label)
+        DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+        if (!DarkMode)
+        {
+            back.setBackgroundColor(resources.getColor(R.color.white))
+            linearLayout.setBackgroundResource(R.drawable.shadow)
+            maintext.setTextColor(resources.getColor(R.color.cardview_dark_background))
+        }
+        else
+        {
+            back.setBackgroundColor(resources.getColor(R.color.DarkModeBack))
+            linearLayout.setBackgroundResource(R.drawable.shadowdark)
+            maintext.setTextColor(resources.getColor(R.color.DarkText))
+        }
     }
 
     fun SeeQuest(a: Int) {

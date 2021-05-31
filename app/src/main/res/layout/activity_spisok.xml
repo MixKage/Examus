@@ -7,6 +7,7 @@
     tools:context=".Spisok">
 
     <LinearLayout
+        android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,6 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <LinearLayout
+            android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"

@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -21,13 +22,15 @@ class Test : AppCompatActivity() {
     private lateinit var textBox1: TextView
     private lateinit var textBox2: TextView
     private lateinit var photobox: ImageView
-
+    private var DarkMode: Boolean = false
+    private var APP_PREFERENCES_DARKMODE = "DarkMode"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         GenerateQuestAnswer()
         setContentView(R.layout.activity_test)
+        SwitchToDarkMode()
         button = findViewById(R.id.button)
         label1 = findViewById(R.id.label1)
         textBox1 = findViewById(R.id.textBox1)
@@ -47,6 +50,26 @@ class Test : AppCompatActivity() {
         button.setOnClickListener()
         {
             ButtonClick()
+        }
+    }
+    @Suppress("DEPRECATION")
+    private fun SwitchToDarkMode() {
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        val back = findViewById<LinearLayout>(R.id.back)
+        val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
+        val maintext = findViewById<TextView>(R.id.label1)
+        DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+        if (!DarkMode)
+        {
+            back.setBackgroundColor(resources.getColor(R.color.white))
+            linearLayout.setBackgroundResource(R.drawable.shadow)
+            maintext.setTextColor(resources.getColor(R.color.cardview_dark_background))
+        }
+        else
+        {
+            back.setBackgroundColor(resources.getColor(R.color.DarkModeBack))
+            linearLayout.setBackgroundResource(R.drawable.shadowdark)
+            maintext.setTextColor(resources.getColor(R.color.DarkText))
         }
     }
 

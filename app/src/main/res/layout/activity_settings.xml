@@ -7,6 +7,7 @@
     tools:context=".settings">
 
     <LinearLayout
+        android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -16,10 +17,11 @@
         app:layout_constraintTop_toTopOf="parent"
         android:weightSum="100">
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:orientation="horizontal"
-            android:layout_weight="8"
+            android:layout_weight="10"
             android:background="@drawable/shadow"
             >
             <TextView
@@ -27,10 +29,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="5dp"
+                android:layout_gravity="center"
                 android:text="Настройки"
-                android:textAlignment="textStart"
                 android:textColor="@color/cardview_dark_background"
-                android:textSize="30sp"
+                android:textSize="40sp"
                 android:textStyle="bold"
                 />
         </LinearLayout>
@@ -41,24 +43,24 @@
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
 
-            android:layout_weight="82">
+            android:layout_weight="80">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <Switch
-                    android:id="@+id/switch1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Тёмная тема" />
-
                 <TextView
                     android:id="@+id/textBox2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="italic" />
+
+                <Switch
+                    android:id="@+id/switch1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Тёмная тема" />
 
                 <TextView
                     android:id="@+id/textBox1"

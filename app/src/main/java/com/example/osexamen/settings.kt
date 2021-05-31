@@ -3,11 +3,14 @@ package com.example.osexamen
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.Switch
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
@@ -24,11 +27,20 @@ class settings : AppCompatActivity() {
         prefs = getSharedPreferences("settings", Context.MODE_PRIVATE)
         val button1 = findViewById<Button>(R.id.button)
         val switch = findViewById<Switch>(R.id.switch1)
-
+        SwitchTheme()
         DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
         switch.isChecked = DarkMode
         button1?.setOnClickListener()
         {
+            val editor = prefs.edit()
+            if (DarkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                editor.putBoolean(APP_PREFERENCES_DARKMODE, DarkMode).apply()
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                editor.putBoolean(APP_PREFERENCES_DARKMODE, DarkMode).apply()
+            }
+            SwitchTheme()
             this.finish()
         }
 
@@ -41,16 +53,24 @@ class settings : AppCompatActivity() {
         }
 
         switch.setOnCheckedChangeListener { buttonView, isChecked ->
-            val editor = prefs.edit()
-            if (isChecked) {
-                DarkMode = true
-                editor.putBoolean(APP_PREFERENCES_DARKMODE, DarkMode).apply()
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            } else {
-                DarkMode = false
-                editor.putBoolean(APP_PREFERENCES_DARKMODE, DarkMode).apply()
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            }
+            DarkMode = isChecked
+        }
+    }
+
+    private fun SwitchTheme() {
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        val textMenu = findViewById<TextView>(R.id.label1)
+        val linearLayout1 = findViewById<LinearLayout>(R.id.linearLayout)
+        val back = findViewById<LinearLayout>(R.id.back)
+        DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+        if (!DarkMode) {
+            linearLayout1.setBackgroundResource(R.drawable.shadow)
+            textMenu.setTextColor(resources.getColor(R.color.cardview_dark_background))
+            back.setBackgroundColor(resources.getColor(R.color.white))
+        } else {
+            linearLayout1.setBackgroundResource(R.drawable.shadowdark)
+            textMenu.setTextColor(resources.getColor(R.color.DarkText))
+            back.setBackgroundColor(resources.getColor(R.color.DarkModeBack))
         }
     }
 }

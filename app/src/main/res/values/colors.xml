@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="DarkModeBack">#141F25</color>
+    <color name="DarkText">#EEE8D5</color>
+    <color name="DDarkText">#BFBCB1</color>
 </resources>
