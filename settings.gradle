@@ -1,0 +1,2 @@
+rootProject.name = "OSexamen"
+include ':app'
