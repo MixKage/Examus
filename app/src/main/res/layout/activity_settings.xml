@@ -51,17 +51,32 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textBox2"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="italic" />
+                    android:layout_height="wrap_content" />
 
                 <Switch
                     android:id="@+id/switch1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Тёмная тема" />
-
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <Button
+                    android:id="@+id/donat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="поддержать проект" />
+                <Button
+                    android:id="@+id/connection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="присоединиться к проекту" />
+                <Button
+                    android:id="@+id/bugreport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="сообщить о проблеме" />
                 <TextView
                     android:id="@+id/textBox1"
                     android:layout_width="match_parent"

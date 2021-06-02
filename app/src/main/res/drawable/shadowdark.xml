@@ -10,7 +10,7 @@
                 android:right="1dp"
                 android:top="1dp" />
 
-            <solid android:color="#00CCCCCC" />
+<!--            <solid android:color="#00CCCCCC" />-->
 
             <corners android:radius="3dp" />
         </shape>
@@ -23,7 +23,7 @@
                 android:right="1dp"
                 android:top="1dp" />
 
-            <solid android:color="#10CCCCCC" />
+<!--            <solid android:color="#10CCCCCC" />-->
 
             <corners android:radius="3dp" />
         </shape>
@@ -36,7 +36,7 @@
                 android:right="1dp"
                 android:top="1dp" />
 
-            <solid android:color="#20CCCCCC" />
+            <stroke android:color="@color/DDarkText" />
 
             <corners android:radius="3dp" />
         </shape>

@@ -100,8 +100,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="список" />
+
                     <TextView
-                        android:id="@+id/textView13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="Сумкин К.С."
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        android:textAlignment="center"/>
+                    <TextView
+                        android:id="@+id/textView16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
@@ -151,12 +160,13 @@
                         android:layout_height="wrap_content"
                         android:text="список" />
                     <TextView
-                        android:id="@+id/textView14"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:textSize="5sp"
-                        tools:visibility="invisible" />
+                        android:text="Клименкова М.С."
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        android:textAlignment="center"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -200,12 +210,13 @@
                         android:layout_height="wrap_content"
                         android:text="список" />
                     <TextView
-                        android:id="@+id/textView15"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:textSize="5sp"
-                        tools:visibility="invisible" />
+                        android:text="Еремеева Ю.Н."
+                        android:textSize="14sp"
+                        android:visibility="visible"
+                        android:textAlignment="center"/>
                 </LinearLayout>
 
             </LinearLayout>

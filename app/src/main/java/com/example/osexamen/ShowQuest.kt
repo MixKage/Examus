@@ -3,6 +3,8 @@ package com.example.osexamen
 import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.view.MotionEvent
+import android.view.View
 import android.view.animation.AlphaAnimation
 import android.widget.Button
 import android.widget.LinearLayout
@@ -14,12 +16,11 @@ import androidx.appcompat.app.AppCompatDelegate
 class ShowQuest : AppCompatActivity() {
     private var DarkMode: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
-    @SuppressLint("SetTextI18n")
+    @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_show_quest)
-        val buttonClick = AlphaAnimation(1f, 0.8f)
         val textBox1 = findViewById<TextView>(R.id.textBox1)
         val textBox2 = findViewById<TextView>(R.id.textBox2)
         SwitchToDarkMode()
@@ -29,9 +30,17 @@ class ShowQuest : AppCompatActivity() {
         textBox2.text = "Вопрос: $quest"
         textBox1.text = "\n\nОтвет: $answer"
         val button0 = findViewById<Button>(R.id.button)
+        button0.setOnTouchListener(object : View.OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                if (event!!.action == MotionEvent.ACTION_DOWN)
+                    button0.alpha = 0.7f
+                else if (event.action == MotionEvent.ACTION_UP)
+                    button0.alpha = 1f
+                return false
+            }
+        })
         button0?.setOnClickListener {
             ExitToMenu()
-            button0.startAnimation(buttonClick)
         }
     }
 

@@ -21,87 +21,73 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         setContentView(R.layout.activity_main)
+        SwitchToDarkMode()
         val button1 = findViewById<Button>(R.id.button1)
         val settings = findViewById<ImageView>(R.id.settings)
-        SwitchToDarkMode()
-        button1?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN)
-                    button1.alpha = 0.7f
-                else if (event.action == MotionEvent.ACTION_UP)
-                    button1.alpha = 1f
-                return false
-            }
-        })
+        button1?.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN)
+                button1.alpha = 0.7f
+            else if (event.action == MotionEvent.ACTION_UP)
+                button1.alpha = 1f
+            false
+        }
         button1?.setOnClickListener()
         { TestOS() }
         settings?.setOnClickListener()
         { Settings() }
-        settings?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN)
-                    settings.alpha = 0.7f
-                else if (event.action == MotionEvent.ACTION_UP)
-                    settings.alpha = 1f
-                return false
-            }
-        })
+        settings?.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN)
+                settings.alpha = 0.7f
+            else if (event.action == MotionEvent.ACTION_UP)
+                settings.alpha = 1f
+            false
+        }
         val button2 = findViewById<Button>(R.id.button2)
-        button2?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN)
-                    button2.alpha = 0.7f
-                else if (event.action == MotionEvent.ACTION_UP)
-                    button2.alpha = 1f
-                return false
-            }
-        })
+        button2?.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN)
+                button2.alpha = 0.7f
+            else if (event.action == MotionEvent.ACTION_UP)
+                button2.alpha = 1f
+            false
+        }
         button2?.setOnClickListener { SpisokOS() }
         val button4 = findViewById<Button>(R.id.button4)
-        button4?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN)
-                    button4.alpha = 0.7f
-                else if (event.action == MotionEvent.ACTION_UP)
-                    button4.alpha = 1f
-                return false
-            }
-        })
+        button4?.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN)
+                button4.alpha = 0.7f
+            else if (event.action == MotionEvent.ACTION_UP)
+                button4.alpha = 1f
+            false
+        }
         button4?.setOnClickListener { message() }
         val button5 = findViewById<Button>(R.id.button5)
-        button5?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN)
-                    button5.alpha = 0.7f
-                else if (event.action == MotionEvent.ACTION_UP)
-                    button5.alpha = 1f
-                return false
-            }
-        })
+        button5?.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN)
+                button5.alpha = 0.7f
+            else if (event.action == MotionEvent.ACTION_UP)
+                button5.alpha = 1f
+            false
+        }
         button5?.setOnClickListener { message() }
         val button6 = findViewById<Button>(R.id.button6)
-        button6?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN)
-                    button6.alpha = 0.7f
-                else if (event.action == MotionEvent.ACTION_UP)
-                    button6.alpha = 1f
-                return false
-            }
-        })
+        button6?.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN)
+                button6.alpha = 0.7f
+            else if (event.action == MotionEvent.ACTION_UP)
+                button6.alpha = 1f
+            false
+        }
         button6?.setOnClickListener {
             message()
         }
         val button7 = findViewById<Button>(R.id.button7)
-        button7?.setOnTouchListener(object : View.OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-                if (event!!.action == MotionEvent.ACTION_DOWN)
-                    button7.alpha = 0.7f
-                else if (event.action == MotionEvent.ACTION_UP)
-                    button7.alpha = 1f
-                return false
-            }
-        })
+        button7?.setOnTouchListener { v, event ->
+            if (event!!.action == MotionEvent.ACTION_DOWN)
+                button7.alpha = 0.7f
+            else if (event.action == MotionEvent.ACTION_UP)
+                button7.alpha = 1f
+            false
+        }
         button7?.setOnClickListener {
             message()
         }
