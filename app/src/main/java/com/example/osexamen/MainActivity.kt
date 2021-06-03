@@ -18,9 +18,9 @@ class MainActivity : AppCompatActivity() {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
-//        setTheme(R.style.Theme_OSexamen)
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+        getWindow().setNavigationBarColor(getResources().getColor(R.color.black));
         setContentView(R.layout.activity_main)
         SwitchToDarkMode()
         val button1 = findViewById<Button>(R.id.button1)

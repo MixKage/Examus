@@ -22,6 +22,7 @@ class Test : AppCompatActivity() {
     private lateinit var textBox2: TextView
     private lateinit var photobox: ImageView
     private var DarkMode: Boolean = false
+    private var ShowNum: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +30,7 @@ class Test : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_test)
         SwitchToDarkMode()
+        ShowNum()
         button = findViewById(R.id.button)
         label1 = findViewById(R.id.label1)
         textBox1 = findViewById(R.id.textBox1)
@@ -72,7 +74,10 @@ class Test : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun FirstClick() {
         photobox.setImageDrawable(null)
-        label1.text = "Вопрос " + (count + 1)
+        if(!ShowNum)
+            label1.text = "Вопрос " + (count + 1)
+        else
+            label1.text = "Вопрос " + (count + 1) + "(№"+count+1+")"
         button.text = "Answer"
         var temp = (0..ArrayInfo.maxId).random()
         while (temp in questInt)
@@ -98,6 +103,11 @@ class Test : AppCompatActivity() {
             }
         }
         button.text = "Question"
+//        if(!ShowNum)
+//            label1.text = "Вопрос " + ArrayInfo.GetQuestion(questInt[count]!!)
+//        else
+//            label1.text = "Вопрос " + ArrayInfo.GetQuestion(questInt[count]!!) + "(№"+count+")"
+
         textBox2.text = "Вопрос: " + ArrayInfo.GetQuestion(questInt[count]!!)//quest[questInt[count]!!]
         textBox1.text = "\n\nОтвет: " + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
         count++
@@ -106,6 +116,13 @@ class Test : AppCompatActivity() {
         {
             button.text = "Exit"
         }
+    }
+
+    fun ShowNum(){
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        APP_PREFERENCES_DARKMODE = "ShowNum"
+        ShowNum = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+        APP_PREFERENCES_DARKMODE = "DarkMode"
     }
 
     fun ButtonClick() {
