@@ -9,9 +9,19 @@
         android:roundIcon="@mipmap/osexam3_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.OSexamen">
-        <activity android:name=".settings">
+        <activity
+            android:name=".SplashScreen"
             android:screenOrientation="portrait"
+            android:theme="@style/Theme.OSexamen.Launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".settings"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ShowQuest"
             android:screenOrientation="portrait" />
@@ -24,11 +34,6 @@
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

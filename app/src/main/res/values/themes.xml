@@ -14,4 +14,17 @@
         <!-- Customize your theme here. -->
         <item name="android:background">@drawable/buttonstyles</item>
     </style>
+    <!-- This style is for the splash screen -->
+    <style name="Theme.OSexamen.Launcher">
+        <item name="android:windowBackground">@drawable/launch_screen</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <!-- для Android 5+ вы можете поменять цвет colorPrimaryDark, чтобы соответствовать цвету windowBackground -->
+        <item name="colorPrimaryDark">@android:color/white</item>
+    </style>
+
+<!--    <style name="Theme.OSexamen.NoActionBar">-->
+<!--        <item name="windowActionBar">false</item>-->
+<!--        <item name="windowNoTitle">true</item>-->
+<!--    </style>-->
 </resources>
