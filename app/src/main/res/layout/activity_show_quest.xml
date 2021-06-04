@@ -5,7 +5,7 @@
     android:id="@+id/textmes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShowQuest">
+    tools:context="my.app.examus.ShowQuest">
 
     <LinearLayout
         android:id="@+id/back"

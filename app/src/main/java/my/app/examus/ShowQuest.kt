@@ -1,21 +1,19 @@
-package com.example.osexamen
+package my.app.examus
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import android.view.animation.AlphaAnimation
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 
 
 class ShowQuest : AppCompatActivity() {
     private var DarkMode: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
+
     @SuppressLint("SetTextI18n", "ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

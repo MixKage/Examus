@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.osexamen">
+    package="my.app.examus">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/examusicon_round"
         android:theme="@style/Theme.OSexamen">
         <activity
-            android:name=".SplashScreen"
+            android:name="my.app.examus.SplashScreen"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.OSexamen.Launcher">
             <intent-filter>
@@ -20,19 +20,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".settings"
+            android:name="my.app.examus.settings"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ShowQuest"
+            android:name="my.app.examus.ShowQuest"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Spisok"
+            android:name="my.app.examus.Spisok"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Test"
+            android:name="my.app.examus.Test"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".MainActivity"
+            android:name="my.app.examus.MainActivity"
             android:screenOrientation="portrait">
         </activity>
     </application>

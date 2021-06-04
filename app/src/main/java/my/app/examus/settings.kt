@@ -1,4 +1,4 @@
-package com.example.osexamen
+package my.app.examus
 
 import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
@@ -8,7 +8,6 @@ import android.content.SharedPreferences
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -59,13 +58,13 @@ class settings : AppCompatActivity() {
             SwitchTheme()
             this.finish()
         }
-        button2?.setOnClickListener() {
+        button2?.setOnClickListener {
             intent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.donationalerts.com/r/alon_prog"));
-            startActivity(intent);
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.donationalerts.com/r/alon_prog"))
+            startActivity(intent)
         }
 
-        button3?.setOnClickListener() {
+        button3?.setOnClickListener {
             val mailto = "mailto:valerij.shishov@gmail.com" +
                     "?cc=" +
                     "&subject=" + Uri.encode("Examus + Helpanus") +
@@ -80,7 +79,7 @@ class settings : AppCompatActivity() {
             }
         }
 
-        button4?.setOnClickListener() {
+        button4?.setOnClickListener {
             val mailto = "mailto:valerij.shishov@gmail.com" +
                     "?cc=" +
                     "&subject=" + Uri.encode("Examus + Bug") +
@@ -95,16 +94,19 @@ class settings : AppCompatActivity() {
             }
         }
 
-        button5?.setOnClickListener() {
+        button5?.setOnClickListener {
             intent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/channel/UC3GTlMdQ4d77rETLkMUKwIA"));
-            startActivity(intent);
+                Intent(
+                    Intent.ACTION_VIEW,
+                    Uri.parse("https://www.youtube.com/channel/UC3GTlMdQ4d77rETLkMUKwIA")
+                )
+            startActivity(intent)
         }
 
-        button6?.setOnClickListener() {
+        button6?.setOnClickListener {
             intent =
-                Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/molereyka"));
-            startActivity(intent);
+                Intent(Intent.ACTION_VIEW, Uri.parse("https://vk.com/molereyka"))
+            startActivity(intent)
         }
 
         button1?.setOnTouchListener { v, event ->
@@ -115,10 +117,10 @@ class settings : AppCompatActivity() {
             false
         }
 
-        amogus?.setOnClickListener() {
+        amogus?.setOnClickListener {
             countTap++
-            if(countTap==5){
-                countTap=0
+            if (countTap == 5) {
+                countTap = 0
                 Amogus()
             }
         }
@@ -131,8 +133,8 @@ class settings : AppCompatActivity() {
         }
     }
 
-    private fun Amogus(){
-        var mediaPlayer: MediaPlayer = MediaPlayer.create(this,R.raw.amogus)
+    private fun Amogus() {
+        var mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.amogus)
         mediaPlayer.start()
         val toast = Toast.makeText(applicationContext, "AMOGUS!", Toast.LENGTH_SHORT)
         toast.show()

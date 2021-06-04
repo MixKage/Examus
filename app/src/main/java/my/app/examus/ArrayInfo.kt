@@ -1,4 +1,4 @@
-package com.example.osexamen
+package my.app.examus
 
 private var answer = arrayOfNulls<String>(64)
 private var quest = arrayOfNulls<String>(64)

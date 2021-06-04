@@ -1,4 +1,4 @@
-package com.example.osexamen
+package my.app.examus
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -6,12 +6,12 @@ import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.MotionEvent
-import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
     private var DarkMode: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-        getWindow().setNavigationBarColor(getResources().getColor(R.color.black));
+        window.navigationBarColor = resources.getColor(R.color.black)
         setContentView(R.layout.activity_main)
         SwitchToDarkMode()
         val button1 = findViewById<Button>(R.id.button1)
@@ -66,8 +66,7 @@ class MainActivity : AppCompatActivity() {
         val settings = findViewById<ImageView>(R.id.settings)
         val back = findViewById<LinearLayout>(R.id.back)
         DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
-        if (!DarkMode)
-        {
+        if (!DarkMode) {
             linearLayout1.setBackgroundResource(R.drawable.shadow)
             linearLayout2.setBackgroundResource(R.drawable.shadow)
             linearLayout3.setBackgroundResource(R.drawable.shadow)
@@ -77,11 +76,9 @@ class MainActivity : AppCompatActivity() {
             textView3.setTextColor(resources.getColor(R.color.cardview_dark_background))
             textView4.setTextColor(resources.getColor(R.color.cardview_dark_background))
             back.setBackgroundColor(resources.getColor(R.color.white))
-            settings.alpha=1f
+            settings.alpha = 1f
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        }
-        else
-        {
+        } else {
             linearLayout1.setBackgroundResource(R.drawable.shadowdark)
             linearLayout2.setBackgroundResource(R.drawable.shadowdark)
             linearLayout3.setBackgroundResource(R.drawable.shadowdark)
@@ -91,7 +88,7 @@ class MainActivity : AppCompatActivity() {
             textView3.setTextColor(resources.getColor(R.color.DDarkText))
             textView4.setTextColor(resources.getColor(R.color.DDarkText))
             back.setBackgroundColor(resources.getColor(R.color.DarkModeBack))
-            settings.alpha=0.8f
+            settings.alpha = 0.8f
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }

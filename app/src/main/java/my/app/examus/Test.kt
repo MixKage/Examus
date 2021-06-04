@@ -1,9 +1,8 @@
-package com.example.osexamen
+package my.app.examus
 
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.MotionEvent
-import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -24,6 +23,7 @@ class Test : AppCompatActivity() {
     private var DarkMode: Boolean = false
     private var ShowNum: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +50,7 @@ class Test : AppCompatActivity() {
             ButtonClick()
         }
     }
+
     @Suppress("DEPRECATION")
     private fun SwitchToDarkMode() {
         val prefs = getSharedPreferences("settings", MODE_PRIVATE)
@@ -57,14 +58,11 @@ class Test : AppCompatActivity() {
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
         val maintext = findViewById<TextView>(R.id.label1)
         DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
-        if (!DarkMode)
-        {
+        if (!DarkMode) {
             back.setBackgroundColor(resources.getColor(R.color.white))
             linearLayout.setBackgroundResource(R.drawable.shadow)
             maintext.setTextColor(resources.getColor(R.color.cardview_dark_background))
-        }
-        else
-        {
+        } else {
             back.setBackgroundColor(resources.getColor(R.color.DarkModeBack))
             linearLayout.setBackgroundResource(R.drawable.shadowdark)
             maintext.setTextColor(resources.getColor(R.color.DarkText))
@@ -78,10 +76,10 @@ class Test : AppCompatActivity() {
         var temp = (0..ArrayInfo.maxId).random()
         while (temp in questInt)
             temp = (0..ArrayInfo.maxId).random()
-        if(!ShowNum)
+        if (!ShowNum)
             label1.text = "Вопрос " + (count + 1)
         else
-            label1.text = "Вопрос " + (count + 1) + " (№"+(temp+1).toString()+")"
+            label1.text = "Вопрос " + (count + 1) + " (№" + (temp + 1).toString() + ")"
         questInt[count] = temp
         textBox2.text = ""
         textBox1.text = ArrayInfo.GetQuestion(temp)//quest[temp]
@@ -102,25 +100,29 @@ class Test : AppCompatActivity() {
             }
         }
         button.text = "Question"
-        if(!ShowNum)
+        if (!ShowNum)
             textBox2.text = "Вопрос " + ArrayInfo.GetQuestion(questInt[count]!!)
         else
-            textBox2.text = "Вопрос (№"+(questInt[count]!!+1).toString()+"):\n"+ ArrayInfo.GetQuestion(questInt[count]!!)
+            textBox2.text =
+                "Вопрос (№" + (questInt[count]!! + 1).toString() + "):\n" + ArrayInfo.GetQuestion(
+                    questInt[count]!!
+                )
 
         //textBox2.text = "Вопрос: " + ArrayInfo.GetQuestion(questInt[count]!!)//quest[questInt[count]!!]
-        if(!ShowNum)
-            textBox1.text = "\n\nОтвет: " + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
+        if (!ShowNum)
+            textBox1.text =
+                "\n\nОтвет: " + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
         else
-            textBox1.text = "\n\nОтвет: \n" + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
+            textBox1.text =
+                "\n\nОтвет: \n" + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
         count++
         doubleclick = false
-        if (count == 10)
-        {
+        if (count == 10) {
             button.text = "Exit"
         }
     }
 
-    fun ShowNum(){
+    fun ShowNum() {
         val prefs = getSharedPreferences("settings", MODE_PRIVATE)
         APP_PREFERENCES_DARKMODE = "ShowNum"
         ShowNum = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
