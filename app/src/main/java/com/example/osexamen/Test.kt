@@ -74,15 +74,14 @@ class Test : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     fun FirstClick() {
         photobox.setImageDrawable(null)
-        if(!ShowNum)
-            label1.text = "Вопрос " + (count + 1)
-        else
-            label1.text = "Вопрос " + (count + 1) + "(№"+count+1+")"
         button.text = "Answer"
         var temp = (0..ArrayInfo.maxId).random()
         while (temp in questInt)
             temp = (0..ArrayInfo.maxId).random()
-
+        if(!ShowNum)
+            label1.text = "Вопрос " + (count + 1)
+        else
+            label1.text = "Вопрос " + (count + 1) + " (№"+(temp+1).toString()+")"
         questInt[count] = temp
         textBox2.text = ""
         textBox1.text = ArrayInfo.GetQuestion(temp)//quest[temp]
@@ -103,13 +102,16 @@ class Test : AppCompatActivity() {
             }
         }
         button.text = "Question"
-//        if(!ShowNum)
-//            label1.text = "Вопрос " + ArrayInfo.GetQuestion(questInt[count]!!)
-//        else
-//            label1.text = "Вопрос " + ArrayInfo.GetQuestion(questInt[count]!!) + "(№"+count+")"
+        if(!ShowNum)
+            textBox2.text = "Вопрос " + ArrayInfo.GetQuestion(questInt[count]!!)
+        else
+            textBox2.text = "Вопрос (№"+(questInt[count]!!+1).toString()+"):\n"+ ArrayInfo.GetQuestion(questInt[count]!!)
 
-        textBox2.text = "Вопрос: " + ArrayInfo.GetQuestion(questInt[count]!!)//quest[questInt[count]!!]
-        textBox1.text = "\n\nОтвет: " + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
+        //textBox2.text = "Вопрос: " + ArrayInfo.GetQuestion(questInt[count]!!)//quest[questInt[count]!!]
+        if(!ShowNum)
+            textBox1.text = "\n\nОтвет: " + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
+        else
+            textBox1.text = "\n\nОтвет: \n" + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
         count++
         doubleclick = false
         if (count == 10)

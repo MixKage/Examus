@@ -16,6 +16,7 @@ import androidx.core.view.setPadding
 class Spisok : AppCompatActivity() {
     val ArrayInfo = ArrayInfo(1)
     private var DarkMode: Boolean = false
+    private var ShowNum: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +24,7 @@ class Spisok : AppCompatActivity() {
         supportActionBar?.hide()
         setContentView(R.layout.activity_spisok)
         SwitchToDarkMode()
+        ShowNum()
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
         var CountID = 0
@@ -31,7 +33,10 @@ class Spisok : AppCompatActivity() {
         while (CountID <= ArrayInfo.maxId)
         {
             val b = Button(applicationContext)
-            b.text = ArrayInfo.GetQuestion(CountID)//quest[CountID]
+            if(!ShowNum)
+                b.text = " " + ArrayInfo.GetQuestion(CountID)//quest[CountID]
+            else
+                b.text = (CountID+1).toString() + ". " + ArrayInfo.GetQuestion(CountID)
             b.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -74,6 +79,13 @@ class Spisok : AppCompatActivity() {
             false
         }
         button0?.setOnClickListener { ExitToMenu() }
+    }
+
+    fun ShowNum(){
+        val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+        APP_PREFERENCES_DARKMODE = "ShowNum"
+        ShowNum = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+        APP_PREFERENCES_DARKMODE = "DarkMode"
     }
 
     @Suppress("DEPRECATION")
