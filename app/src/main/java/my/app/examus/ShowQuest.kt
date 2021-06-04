@@ -18,6 +18,7 @@ class ShowQuest : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+        window.navigationBarColor = resources.getColor(R.color.black)
         setContentView(R.layout.activity_show_quest)
         val textBox1 = findViewById<TextView>(R.id.textBox1)
         val textBox2 = findViewById<TextView>(R.id.textBox2)

@@ -12,6 +12,7 @@ class SplashScreen : AppCompatActivity() {
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_OSexamen)
+        window.navigationBarColor = resources.getColor(R.color.black)
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
         SwitchToDarkModeApp()

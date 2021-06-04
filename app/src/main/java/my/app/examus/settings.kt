@@ -25,6 +25,7 @@ class settings : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+        window.navigationBarColor = resources.getColor(R.color.black)
         setContentView(R.layout.activity_settings)
         prefs = getSharedPreferences("settings", Context.MODE_PRIVATE)
         val button1 = findViewById<Button>(R.id.button)

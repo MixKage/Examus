@@ -3,6 +3,7 @@ package my.app.examus
 private var answer = arrayOfNulls<String>(64)
 private var quest = arrayOfNulls<String>(64)
 
+
 class ArrayInfo(_mode: Int) {
     var maxId: Int = 0
     var mode = _mode
@@ -230,7 +231,9 @@ fun ArrayInfoGenerate(inputMode: Int) {
         quest[62] = "Авторизация. Разграничение доступа к объектам ОС."
         quest[63] = "Домены безопасности."
     } else if (inputMode == 2) {
-        //TODO ДОПИЛИТЬ ЭКОНОМИКУ
+        answer[0] = ""
+
+        quest[0] = "Основные этапы развития экономики."
     } else if (inputMode == 3) {
         //TODO ДОПИЛИТЬ ФИЛОСОФИЮ
     }

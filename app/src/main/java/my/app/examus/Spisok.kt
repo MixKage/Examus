@@ -21,6 +21,7 @@ class Spisok : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
+        window.navigationBarColor = resources.getColor(R.color.black)
         setContentView(R.layout.activity_spisok)
         SwitchToDarkMode()
         ShowNum()
