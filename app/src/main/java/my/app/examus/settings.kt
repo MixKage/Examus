@@ -137,8 +137,7 @@ class settings : AppCompatActivity() {
     private fun Amogus() {
         var mediaPlayer: MediaPlayer = MediaPlayer.create(this, R.raw.amogus)
         mediaPlayer.start()
-        val toast = Toast.makeText(applicationContext, "AMOGUS!", Toast.LENGTH_SHORT)
-        toast.show()
+        val toast = Toast.makeText(applicationContext, "AMOGUS!", Toast.LENGTH_SHORT).show()
     }
 
     private fun SwitchTheme() {

@@ -144,7 +144,7 @@
                         android:gravity="center"
                         android:padding="5dp"
                         android:paddingTop="60dp"
-                        android:text="version 1.0" />
+                        android:text="version 1.1" />
                 </LinearLayout>
             </LinearLayout>
 
