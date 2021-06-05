@@ -2,7 +2,6 @@ package my.app.examus
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.*
@@ -14,7 +13,7 @@ class Test : AppCompatActivity() {
     private var count = 0
     private var questInt = arrayOfNulls<Int>(20)
     private var doubleclick = false
-    private val ArrayInfo = ArrayInfo(1)
+    private val ArrayInfo = ArrayInfo()
     private lateinit var loadpres1: Button
     private lateinit var loadpres2: Button
     private lateinit var loadpres3: Button
@@ -56,6 +55,9 @@ class Test : AppCompatActivity() {
         setContentView(R.layout.activity_test)
         SwitchToDarkMode()
         ShowNum()
+        val arguments = intent.extras
+        val mode = arguments!!["mode"].toString()
+        ArrayInfo.generateFromMode(mode.toInt())
         loadpres1 = findViewById(R.id.load1)
         loadpres2 = findViewById(R.id.load2)
         loadpres3 = findViewById(R.id.load3)
@@ -245,6 +247,7 @@ class Test : AppCompatActivity() {
         checkInfo()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun checkInfo() {
         val _min = min1.text.toString()
         val _max = max1.text.toString()
@@ -305,11 +308,12 @@ class Test : AppCompatActivity() {
         rand.progress = _rand.toInt()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun createInfoBar() {
         min.progress = 1
-        min.max = ArrayInfo.maxId + 1
-        max.max = ArrayInfo.maxId + 1
-        max.progress = ArrayInfo.maxId + 1
+        min.max = ArrayInfo.getMaxId() + 1
+        max.max = ArrayInfo.getMaxId() + 1
+        max.progress = ArrayInfo.getMaxId() + 1
         rand.progress = 10
         mininfo = min.progress.toString()
         maxinfo = max.progress.toString()
@@ -321,7 +325,7 @@ class Test : AppCompatActivity() {
         rand1.setText("")
         rand1.append(randinfo)
         textBox2.text =
-            "Всего вопросов: " + maxinfo + "\nКоличество рандомных вопросов: " + randinfo
+            "Всего вопросов: $maxinfo\nКоличество рандомных вопросов: $randinfo"
     }
 
     private fun parseString(input: String) {
@@ -390,7 +394,7 @@ class Test : AppCompatActivity() {
             label1.text = "Вопрос " + (count + 1) + " (№" + (temp + 1).toString() + ")"
         questInt[count] = temp
         textBox2.text = ""
-        textBox1.text = ArrayInfo.GetQuestion(temp)//quest[temp]
+        textBox1.text = ArrayInfo.getQuestion(temp)//quest[temp]
         doubleclick = true
     }
 
@@ -409,20 +413,20 @@ class Test : AppCompatActivity() {
         }
         button.text = "Question"
         if (!ShowNum)
-            textBox2.text = "Вопрос " + ArrayInfo.GetQuestion(questInt[count]!!)
+            textBox2.text = "Вопрос " + ArrayInfo.getQuestion(questInt[count]!!)
         else
             textBox2.text =
-                "Вопрос (№" + (questInt[count]!! + 1).toString() + "):\n" + ArrayInfo.GetQuestion(
+                "Вопрос (№" + (questInt[count]!! + 1).toString() + "):\n" + ArrayInfo.getQuestion(
                     questInt[count]!!
                 )
 
         //textBox2.text = "Вопрос: " + ArrayInfo.GetQuestion(questInt[count]!!)//quest[questInt[count]!!]
         if (!ShowNum)
             textBox1.text =
-                "\n\nОтвет: " + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
+                "\n\nОтвет: " + ArrayInfo.getAnswer(questInt[count]!!)//answer[questInt[count]!!]
         else
             textBox1.text =
-                "\n\nОтвет: \n" + ArrayInfo.GetAnswer(questInt[count]!!)//answer[questInt[count]!!]
+                "\n\nОтвет: \n" + ArrayInfo.getAnswer(questInt[count]!!)//answer[questInt[count]!!]
         count++
         doubleclick = false
         if (count == rand1.text.toString().toInt()) {

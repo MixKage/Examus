@@ -11,13 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.setPadding
 
 
+@Suppress("DEPRECATION")
 class Spisok : AppCompatActivity() {
-    val ArrayInfo = ArrayInfo(1)
+    val ArrayInfo = ArrayInfo()
     private var DarkMode: Boolean = false
     private var ShowNum: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
 
-    @SuppressLint("ClickableViewAccessibility")
+    @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
@@ -25,17 +26,20 @@ class Spisok : AppCompatActivity() {
         setContentView(R.layout.activity_spisok)
         SwitchToDarkMode()
         ShowNum()
+        val arguments = intent.extras
+        val mode = arguments!!["mode"].toString()
+        ArrayInfo.generateFromMode(mode.toInt())
         val linearLayout = findViewById<LinearLayout>(R.id.linearLayout)
 
         var CountID = 0
         val prefs = getSharedPreferences("settings", MODE_PRIVATE)
         DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
-        while (CountID <= ArrayInfo.maxId) {
+        while (CountID <= ArrayInfo.getMaxId()) {
             val b = Button(applicationContext)
             if (!ShowNum)
-                b.text = " " + ArrayInfo.GetQuestion(CountID)//quest[CountID]
+                b.text = " " + ArrayInfo.getQuestion(CountID)//quest[CountID]
             else
-                b.text = (CountID + 1).toString() + ". " + ArrayInfo.GetQuestion(CountID)
+                b.text = (CountID + 1).toString() + ". " + ArrayInfo.getQuestion(CountID)
             b.layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -69,7 +73,7 @@ class Spisok : AppCompatActivity() {
         }
 
         val button0 = findViewById<Button>(R.id.button0)
-        button0?.setOnTouchListener { v, event ->
+        button0?.setOnTouchListener { _, event ->
             if (event!!.action == MotionEvent.ACTION_DOWN)
                 button0.alpha = 0.7f
             else if (event.action == MotionEvent.ACTION_UP)
@@ -106,8 +110,8 @@ class Spisok : AppCompatActivity() {
 
     fun SeeQuest(a: Int) {
         val showQueste = Intent(this, ShowQuest::class.java)
-        showQueste.putExtra("quest", ArrayInfo.GetQuestion(a - 1))
-        showQueste.putExtra("answer", ArrayInfo.GetAnswer(a - 1))
+        showQueste.putExtra("quest", ArrayInfo.getQuestion(a - 1))
+        showQueste.putExtra("answer", ArrayInfo.getAnswer(a - 1))
         startActivity(showQueste)
     }
 

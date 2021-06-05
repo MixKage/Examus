@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatDelegate
 class MainActivity : AppCompatActivity() {
     private var DarkMode: Boolean = false
     private var APP_PREFERENCES_DARKMODE = "DarkMode"
+    private var mode = 1
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,10 +28,13 @@ class MainActivity : AppCompatActivity() {
         val settings = findViewById<ImageView>(R.id.settings)
         val alpha = settings.alpha
         button1?.setOnClickListener()
-        { TestOS() }
+        {
+            mode = 1
+            testActivity()
+        }
         settings?.setOnClickListener()
-        { Settings() }
-        settings?.setOnTouchListener { v, event ->
+        { settings() }
+        settings?.setOnTouchListener { _, event ->
             if (event!!.action == MotionEvent.ACTION_DOWN)
                 settings.alpha = alpha - 0.3f
             else if (event.action == MotionEvent.ACTION_UP)
@@ -38,11 +42,23 @@ class MainActivity : AppCompatActivity() {
             false
         }
         val button2 = findViewById<Button>(R.id.button2)
-        button2?.setOnClickListener { SpisokOS() }
+        button2?.setOnClickListener()
+        {
+            mode = 1
+            listQuestion()
+        }
         val button4 = findViewById<Button>(R.id.button4)
-        button4?.setOnClickListener { message() }
+        button4?.setOnClickListener()
+        {
+            mode = 2
+            testActivity()
+        }
         val button5 = findViewById<Button>(R.id.button5)
-        button5?.setOnClickListener { message() }
+        button5?.setOnClickListener()
+        {
+            mode =2
+            listQuestion()
+        }
         val button6 = findViewById<Button>(R.id.button6)
         button6?.setOnClickListener {
             message()
@@ -93,19 +109,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun TestOS() {
-        val testOS = Intent(this, Test::class.java)
-        startActivity(testOS)
+    private fun testActivity() {
+        val testActivity = Intent(this, Test::class.java)
+        testActivity.putExtra("mode", mode.toString())
+        startActivity(testActivity)
     }
 
-    private fun Settings() {
+    private fun settings() {
         val set = Intent(this, settings::class.java)
         startActivity(set)
     }
 
-    private fun SpisokOS() {
-        val spisOS = Intent(this, Spisok::class.java)
-        startActivity(spisOS)
+    private fun listQuestion() {
+        val listQuestion = Intent(this, Spisok::class.java)
+        listQuestion.putExtra("mode", mode.toString())
+        startActivity(listQuestion)
     }
 
     private fun message() {
