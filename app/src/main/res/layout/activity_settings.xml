@@ -81,7 +81,8 @@
                         android:id="@+id/donat"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="поддержать проект" />
+                        android:text="поддержать проект"
+                        android:visibility="invisible"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"

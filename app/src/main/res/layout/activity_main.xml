@@ -190,7 +190,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:padding="5dp"
-                        android:text="Философия зачёт"
+                        android:text="Философия экзамен"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:textAlignment="center"

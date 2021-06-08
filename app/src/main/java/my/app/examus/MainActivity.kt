@@ -50,14 +50,16 @@ class MainActivity : AppCompatActivity() {
         val button4 = findViewById<Button>(R.id.button4)
         button4?.setOnClickListener()
         {
-            mode = 2
-            testActivity()
+            message()
+//            mode = 2
+//            testActivity()
         }
         val button5 = findViewById<Button>(R.id.button5)
         button5?.setOnClickListener()
         {
-            mode =2
-            listQuestion()
+            message()
+//            mode =2
+//            listQuestion()
         }
         val button6 = findViewById<Button>(R.id.button6)
         button6?.setOnClickListener {
