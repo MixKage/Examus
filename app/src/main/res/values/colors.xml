@@ -10,4 +10,6 @@
     <color name="DarkModeBack">#141F25</color>
     <color name="DarkText">#EEE8D5</color>
     <color name="DDarkText">#BFBCB1</color>
+    <color name="Back">#DDDDDD</color>
+    <color name="BottomBar">#ECECEC</color>
 </resources>

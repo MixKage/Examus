@@ -50,7 +50,8 @@ class MainActivity : AppCompatActivity() {
         val button4 = findViewById<Button>(R.id.button4)
         button4?.setOnClickListener()
         {
-            message()
+            val NewMainActivity = Intent(this, NewMain::class.java)
+            startActivity(NewMainActivity)//ВЫЛЕТАЕТ
 //            mode = 2
 //            testActivity()
         }
@@ -68,6 +69,11 @@ class MainActivity : AppCompatActivity() {
         val button7 = findViewById<Button>(R.id.button7)
         button7?.setOnClickListener {
             message()
+        }
+        val newmenu = findViewById<Button>(R.id.newmenu)
+        newmenu?.setOnClickListener {
+            val NewMainActivity = Intent(this, NewMain::class.java)
+            startActivity(NewMainActivity)//ВЫЛЕТАЕТ
         }
     }
 

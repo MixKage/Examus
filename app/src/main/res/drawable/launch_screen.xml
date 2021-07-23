@@ -9,7 +9,7 @@
 <item>
     <bitmap android:mipMap="true"/>
 </item>
-<!--    <item android:drawable=""-->
+<!--    <item android:drawable="@color/DDarkText"-->
 <!--        <item>-->
 <!--            <bitmap android:src="@color/DDarkText"-->
 <!--                android:tileModeX="disabled"-->
