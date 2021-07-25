@@ -1,7 +1,6 @@
 package my.app.examus
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +12,15 @@ import androidx.fragment.app.Fragment
 
 
 class Fragment1 : Fragment() {
-    lateinit var ScrollView: ScrollView
-    lateinit var MainText: LinearLayout
-    lateinit var MainTextMini: TextView
-    lateinit var MainTextBig: TextView
-    var MarginMainText = 0 //DEL
+    private lateinit var ScrollView: ScrollView
+    private lateinit var MainText: LinearLayout
+    private lateinit var MainTextMini: TextView
+    private lateinit var MainTextBig: TextView
+
+    private var maxScroll = 0
+    private var maxScrollMiniMain = 0
+    private var firstMaxMiniMainScroll = false
+    private var scrollY = 0
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,16 +34,13 @@ class Fragment1 : Fragment() {
         MainText = view.findViewById(R.id.miniMain)
         MainTextBig = view.findViewById(R.id.MainText)
         MainTextMini = view.findViewById(R.id.miniMainText)
-//        ScrollView.isVerticalScrollBarEnabled = false
+        val params = MainText.layoutParams as ViewGroup.MarginLayoutParams//Высчитывает максимально возможный скролл для огромного текста
+        maxScroll = params.topMargin
     }
 
     override fun onStart() {
         super.onStart()
-        var scrollY = ScrollView.scrollY
-        val params = MainText.layoutParams as ViewGroup.MarginLayoutParams
-        var maxScrollMiniMain = 0
-        var firstMaxMiniMainScroll = false
-        val maxScroll = params.topMargin
+        scrollY = ScrollView.scrollY
 
         ScrollView.viewTreeObserver.addOnScrollChangedListener(OnScrollChangedListener { //Включается когда производится скролл
             val upDown: Boolean = ScrollView.scrollY < scrollY // true if scroll up
@@ -69,26 +69,12 @@ class Fragment1 : Fragment() {
             MainText.layoutParams = params
             scrollY = ScrollView.scrollY
 
-            MainTextBig.alpha=1-(scrollY.toFloat()*100.0/maxScroll.toFloat()/100.0).toFloat()
+            MainTextBig.alpha=(1-(scrollY.toFloat()*100.0/maxScroll.toFloat()/100.0)/0.5).toFloat()
             MainTextMini.alpha=(scrollY.toFloat()*100.0/maxScroll.toFloat()/100.0).toFloat()
-//            ScrollView.isVerticalScrollBarEnabled = params.topMargin == 0
             if(params.topMargin == 0)
                 MainText.elevation = 10f
             else
                 MainText.elevation = 0f
-//            Log.d("TAG2", params.topMargin.toString())
-//            Log.d("TAG1", MainText.top.toString())
-//            Log.d("TAG", ScrollView.scrollY.toString())
         })
-//        Log.d("TAG", ScrollView.scrollY.toString())
     }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d("TAG", ScrollView.scrollY.toString())
-    }
-//    override fun onCreate(){
-//        ScrollView = findViewById<Button>(R.id.button1)//ПОЛЬЗОВАТЕЛЬ ДВИГАЕТ СКРОЛЛ
-//    }
-
 }

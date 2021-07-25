@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "my.app.examus"
-        minSdkVersion 24
+        minSdkVersion 23
         targetSdkVersion 30
         versionCode 2
         versionName '1.1'
