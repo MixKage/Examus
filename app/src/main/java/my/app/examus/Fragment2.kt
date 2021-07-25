@@ -18,8 +18,6 @@ class Fragment2 : Fragment() {
     private lateinit var MainTextBig: TextView
 
     private var maxScroll = 0
-    private var maxScrollMiniMain = 0
-    private var firstMaxMiniMainScroll = false
     private var scrollY = 0
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,27 +38,20 @@ class Fragment2 : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        scrollY = ScrollView.scrollY
 
         ScrollView.viewTreeObserver.addOnScrollChangedListener(OnScrollChangedListener { //Включается когда производится скролл
             val upDown: Boolean = ScrollView.scrollY < scrollY // true if scroll up
             val params = MainText.layoutParams as ViewGroup.MarginLayoutParams//Параметры LinearLayout MiniMain
-            var temp = 0
 
-            temp = if (upDown) {//Считаем на сколько нужно подвинуть наш MiniMain
-                if ((ScrollView.scrollY <= maxScrollMiniMain)||maxScrollMiniMain==0) {
+            var temp: Int = if (upDown) {//Считаем на сколько нужно подвинуть наш MiniMain
+                if (ScrollView.scrollY <= maxScroll) {
                     params.topMargin + (scrollY - ScrollView.scrollY)
                 } else
                     0
             } else
                 params.topMargin - ScrollView.scrollY + scrollY
-
-            if ((temp < 0) && !(upDown)) {//Высчитываем максимальную прокрутку где нужно приклеивать верхний MiniMain
+            if ((temp < 0) && !(upDown)) {//Двигаем MiniMain в зависимости от прокрутки
                 params.topMargin = 0
-                if (!firstMaxMiniMainScroll) {
-                    firstMaxMiniMainScroll = !firstMaxMiniMainScroll
-                    maxScrollMiniMain = ScrollView.scrollY
-                }
             } else if ((temp > maxScroll) && (upDown))
                 params.topMargin = maxScroll
             else
@@ -71,7 +62,6 @@ class Fragment2 : Fragment() {
 
             MainTextBig.alpha=(1-(scrollY.toFloat()*100.0/maxScroll.toFloat()/100.0)/0.5).toFloat()
             MainTextMini.alpha=(scrollY.toFloat()*100.0/maxScroll.toFloat()/100.0).toFloat()
-
             if(params.topMargin == 0)
                 MainText.elevation = 10f
             else
