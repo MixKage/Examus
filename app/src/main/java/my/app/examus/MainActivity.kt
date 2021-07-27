@@ -72,8 +72,18 @@ class MainActivity : AppCompatActivity() {
         }
         val newmenu = findViewById<Button>(R.id.newmenu)
         newmenu?.setOnClickListener {
+            val prefs = getSharedPreferences("settings", MODE_PRIVATE)
+            DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
+            if (DarkMode){
+                val text = "В новом меню тёмная версия не работает и ломает приложение!"
+                val duration = Toast.LENGTH_LONG
+
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.setGravity(Gravity.BOTTOM, 0, 0)
+                toast.show()
+            }
             val NewMainActivity = Intent(this, NewMain::class.java)
-            startActivity(NewMainActivity)//ВЫЛЕТАЕТ
+            startActivity(NewMainActivity)
         }
     }
 
@@ -83,6 +93,7 @@ class MainActivity : AppCompatActivity() {
         val textView2 = findViewById<TextView>(R.id.textView2)
         val textView3 = findViewById<TextView>(R.id.textView3)
         val textView4 = findViewById<TextView>(R.id.textView4)
+        val textViewNewMenu = findViewById<TextView>(R.id.NewMenuText)
         val linearLayout1 = findViewById<LinearLayout>(R.id.linearLayout1)
         val linearLayout2 = findViewById<LinearLayout>(R.id.linearLayout2)
         val linearLayout3 = findViewById<LinearLayout>(R.id.linearLayout3)
@@ -99,6 +110,7 @@ class MainActivity : AppCompatActivity() {
             textView2.setTextColor(resources.getColor(R.color.cardview_dark_background))
             textView3.setTextColor(resources.getColor(R.color.cardview_dark_background))
             textView4.setTextColor(resources.getColor(R.color.cardview_dark_background))
+            textViewNewMenu.setTextColor(resources.getColor(R.color.cardview_dark_background))
             back.setBackgroundColor(resources.getColor(R.color.white))
             settings.alpha = 1f
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
@@ -111,6 +123,7 @@ class MainActivity : AppCompatActivity() {
             textView2.setTextColor(resources.getColor(R.color.DDarkText))
             textView3.setTextColor(resources.getColor(R.color.DDarkText))
             textView4.setTextColor(resources.getColor(R.color.DDarkText))
+            textViewNewMenu.setTextColor(resources.getColor(R.color.DDarkText))
             back.setBackgroundColor(resources.getColor(R.color.DarkModeBack))
             settings.alpha = 0.8f
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
