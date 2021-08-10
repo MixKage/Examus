@@ -28,7 +28,7 @@
                 android:layout_height="80dp"
                 android:layout_margin="8dp"
                 android:layout_alignParentBottom="true"
-                app:cardElevation="1dp"
+                app:cardElevation="10dp"
                 app:cardBackgroundColor="@color/BottomBar"
                 app:cardCornerRadius="20dp">
 
@@ -36,7 +36,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:elevation="2dp"
                     android:orientation="horizontal"
                     android:weightSum="3">
 
@@ -47,8 +46,7 @@
                         android:layout_weight="1"
                         android:alpha="0.6"
                         android:padding="10dp"
-                        app:srcCompat="@drawable/downloadcloudicon"
-                        android:elevation="3dp"/>
+                        app:srcCompat="@drawable/downloadcloudicon" />
 
                     <ImageView
                         android:id="@+id/mainicon"

@@ -9,7 +9,6 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewTreeObserver.OnScrollChangedListener
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.ScrollView
@@ -64,10 +63,10 @@ class Fragment1 : Fragment() {
         }
 
 
-        ScrollView.viewTreeObserver.addOnScrollChangedListener(OnScrollChangedListener { //Включается когда производится скролл
+        ScrollView.viewTreeObserver.addOnScrollChangedListener { //Включается когда производится скролл
             scrollEngine()
             alphaElevation()
-        })
+        }
         touchFun()
     }
 
@@ -75,10 +74,6 @@ class Fragment1 : Fragment() {
         super.onResume()
         scrollEngine()//Скролл
         alphaElevation()//Альфа miniMain
-    }
-
-    fun getScreenWidth(): Int {
-        return Resources.getSystem().displayMetrics.widthPixels
     }
 
     private fun scrollEngine() {
@@ -127,9 +122,9 @@ class Fragment1 : Fragment() {
             }
             if (scrollY < maxScroll) {
                 if (scrollY >= maxScroll / 3)//Плавный скролл
-                    ScrollView.post(Runnable { ScrollView.smoothScrollTo(0, maxScroll) })
+                    ScrollView.post { ScrollView.smoothScrollTo(0, maxScroll) }
                 else if (scrollY < maxScroll / 3)
-                    ScrollView.post(Runnable { ScrollView.smoothScrollTo(0, 0) })
+                    ScrollView.post { ScrollView.smoothScrollTo(0, 0) }
             }
         }.start()
     }//Через секунду проверяет состояние Scroll для магнита

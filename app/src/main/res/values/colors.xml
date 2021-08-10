@@ -11,5 +11,6 @@
     <color name="DarkText">#EEE8D5</color>
     <color name="DDarkText">#BFBCB1</color>
     <color name="Back">#DDDDDD</color>
+    <color name="Card">#EFEFEF</color>
     <color name="BottomBar">#ECECEC</color>
 </resources>

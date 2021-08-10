@@ -2,8 +2,6 @@ package my.app.examus
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 
@@ -18,7 +16,7 @@ class SplashScreen : AppCompatActivity() {
         SwitchToDarkModeApp()
         setContentView(R.layout.activity_splash_screen)
         SwitchToDarkMode()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, Tutor::class.java))
         finish()
 //        val SPLASH_TIME_OUT:Long = 1000 // 1 sec
 //        Handler().postDelayed({
@@ -42,15 +40,10 @@ class SplashScreen : AppCompatActivity() {
 
     private fun SwitchToDarkMode() {
         val prefs = getSharedPreferences("settings", MODE_PRIVATE)
-        val textExamus = findViewById<TextView>(R.id.Examus)
-        val back = findViewById<LinearLayout>(R.id.back)
         DarkMode = prefs.getBoolean(APP_PREFERENCES_DARKMODE, false)
         if (!DarkMode) {
-            textExamus.setTextColor(resources.getColor(R.color.cardview_dark_background))
-            back.setBackgroundColor(resources.getColor(R.color.white))
+            //TODO ADD FUNC
         } else {
-            textExamus.setTextColor(resources.getColor(R.color.DDarkText))
-            back.setBackgroundColor(resources.getColor(R.color.DarkModeBack))
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
     }

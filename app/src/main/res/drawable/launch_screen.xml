@@ -3,12 +3,12 @@
     android:opacity="opaque">
 
     <!-- Цвет фона, предпочтительно как в главной теме -->
-    <item android:drawable="@color/DarkModeBack" />
+    <item android:drawable="@color/Back" />
 
     <!-- Лого приложения - 144dp версия иконки приложения -->
-<item>
-    <bitmap android:mipMap="true"/>
-</item>
+<!--<item>-->
+<!--    <bitmap android:mipMap="true"/>-->
+<!--</item>-->
 <!--    <item android:drawable="@color/DDarkText"-->
 <!--        <item>-->
 <!--            <bitmap android:src="@color/DDarkText"-->
@@ -16,5 +16,11 @@
 <!--                android:tileModeY="disabled"-->
 <!--                android:gravity="top"/>-->
 <!--        </item>-->
+
+    <item android:bottom="60dp">
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/logo_splash_screen_examus_mini"/>
+    </item>
 
 </layer-list>
